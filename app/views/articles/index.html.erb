@@ -1,0 +1,18 @@
+<h1>Articles#index</h1>
+<h3>Hello, Rails! M</h3>
+
+<h5>Articles</h5>
+
+Our blog has <%= Article.public_count %> articles and counting!
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Article", new_article_path %>
+
+<p>Find me in app/views/articles/index.html.erb</p>
