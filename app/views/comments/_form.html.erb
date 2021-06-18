@@ -1,17 +1,40 @@
 <%= form_with model: [@article, @article.comments.build] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, %w[public private archived], selected: 'public' %>
+ 
+  <!-- Title CForm-->
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label class="col-form-label"><%= form.label :commenter %></label>
+    </div>
+    <div class="col-auto">
+      <%= form.text_field :commenter, :class =>'form-control' %>
+    </div>
   </div>
-  <p>
-    <%= form.submit %>
-  </p>
+  <!-- Title CForm-->
+
+  <!-- Body CForm-->
+  <div class="" style="margin-top:8px">
+    <%= form.label :body %><br>
+    <%= form.text_area :body, :class =>'form-control' %><br>
+  </div>
+  <!-- Body CForm-->
+
+
+  <!-- Select CForm-->
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label class="col-form-label"><%= form.label :status %><br></label>
+    </div>
+    <div class="col-auto">
+      <%= form.select :status, %w[public private archived], selected: 'public', :class => 'form-select'%>
+    </div>
+  </div>
+  <!-- Select CForm-->
+
+  <!-- Update -->
+  <div>
+    <div style="display: flex; justify-content: flex-end; width: 100%;">
+      <%= form.submit 'Accept', :class => 'btn btn-success'%>
+    </div>
+  </div>
+  <!-- Update -->
 <% end %>

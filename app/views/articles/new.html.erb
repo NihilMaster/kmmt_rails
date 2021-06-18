@@ -1,3 +1,22 @@
-<h4>New Article</h4>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<%= render 'form', article: @article %>
+<!-- Nav New-->
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<%= root_path(@article) %>">
+            <img src="https://rubyonrails.org/images/rails-logo.svg" alt="" width="30" height="24"
+                class="d-inline-block align-text-top">
+            Rails Path - Articles and Comments!
+        </a>
+    </div>
+</nav>
+<!-- Nav New-->
+
+<!-- Form New-->
+<div class="card" style="padding:10px; margin:10px;">
+    <div class="card" style="padding 5px; margin:5px">
+        <h4 style="padding:5px">New Article</h4>
+    </div>
+    <%= render 'form', article: @article %>
+</div>
+<!-- Form New-->

@@ -1,15 +1,23 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+<!-- Title Comm-->
+<div class="card" style="padding 5px; margin:5px; overflow:hidden">
+  <div style="float:left"><strong>Commenter:</strong></div>
+  <div style="float:left"><%= comment.commenter %></div>
+</div>
+<!-- Title Comm-->
 
-<p>
-  <strong>Comment:</strong>
+<!-- Body Comm-->
+<div class="card" style="padding 5px; margin:5px">
+  <strong>
+    <p>Comment:</p>
+  </strong>
   <%= comment.body %>
-</p>
+</div>
+<!-- Body Comm-->
 
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-</p>
+<!-- Delete Comm-->
+<div style="margin:5px">
+  <div class="col"><%= link_to 'Delete comment', [comment.article, comment],
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></div>
+</div>
+<!-- Delete Comm-->
