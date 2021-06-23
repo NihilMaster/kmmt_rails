@@ -1,17 +1,26 @@
-<%= form_with model: [@article, @article.comments.build] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, %w[public private archived], selected: 'public' %>
-  </div>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<fieldset>
+  <div class="card">
+    <%= form_with model: [@article, @article.comments.build] do |form| %>
+    <div class="">
+      <label for="exampleInputEmail1" class="form-label mt-4"><%= form.label :commenter %></label>
+      <%= form.text_field :commenter, class:'form-control'%>
+    </div>
+
+    <div class="">
+      <label for="exampleTextarea" class="form-label mt-4"><%= form.label :body %></label>
+      <%= form.text_area :body, class:'form-control', rows:'3' %>
+    </div>
+
+    <div class="" style="padding:5px">
+      <label for="exampleSelect1" class="form-label mt-4"><%= form.label :status %></label>
+      <%= form.select :status, %w[public private archived], selected: 'public', class: 'form-select' %>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; width: 100%; padding: 5px">
+      <div style="padding:5px">
+        <%= form.submit class:'btn btn-outline-success' %>
+      </div>
+    </div>
+
+    <% end %>
+</fieldset>

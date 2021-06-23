@@ -8,8 +8,10 @@
   <%= comment.body %>
 </p>
 
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-</p>
+<!-- Delete Comm-->
+<div style="margin:5px">
+  <div class="col"><%= button_to 'Delete comment', [comment.article, comment],
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></div>
+</div>
+<!-- Delete Comm-->
