@@ -1,0 +1,35 @@
+<div style="width:100%; display: flex; justify-content: center;">
+  <div class="card border-primary" style="width:50%; padding:10px; ">
+    <h2>Sign up</h2><!-- Crear cuenta -->
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "users/shared/error_messages", resource: resource %>
+
+    <div class="">
+      <label class="form-label mt-4"><%= f.label :email %></label>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control'%>
+    </div>
+
+    <div class="">
+      <label class="form-label mt-4"><%= f.label :password %></label>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class:'form-control'%>
+    </div>
+
+    <div class="">
+      <label class="form-label mt-4"><%= f.label :password_confirmation %></label>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control'%>
+    </div>
+
+    <div class="" style="padding-top:10px">
+      <%= f.submit "Sing up", :class => 'btn btn-outline-primary' %>
+    </div>
+    <% end %>
+
+    <div style="padding-top:10px">
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>
