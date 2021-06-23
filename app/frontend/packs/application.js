@@ -10,10 +10,6 @@ import "channels"
 
 import '../js/bootstrap_js_files.js'
 import '../../assets/stylesheets/application'
-import '../../assets/css/styles'
-import '../../assets/js/scripts'
-import '../../assets/stylesheets/bootstrap'
-import '../../assets/stylesheets/_bootswatch'
 
 Rails.start()
 Turbolinks.start()
