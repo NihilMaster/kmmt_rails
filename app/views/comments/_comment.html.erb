@@ -1,22 +1,16 @@
-<!-- Title Comm-->
-<div class="card" style="padding 5px; margin:5px; overflow:hidden">
-  <div style="float:left"><strong>Commenter:</strong></div>
-  <div style="float:left"><%= comment.commenter %></div>
-</div>
-<!-- Title Comm-->
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+</p>
 
-<!-- Body Comm-->
-<div class="card" style="padding 5px; margin:5px">
-  <strong>
-    <p>Comment:</p>
-  </strong>
+<p>
+  <strong>Comment:</strong>
   <%= comment.body %>
-</div>
-<!-- Body Comm-->
+</p>
 
 <!-- Delete Comm-->
 <div style="margin:5px">
-  <div class="col"><%= link_to 'Delete comment', [comment.article, comment],
+  <div class="col"><%= button_to 'Delete comment', [comment.article, comment],
                   method: :delete,
                   data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></div>
 </div>

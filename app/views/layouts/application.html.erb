@@ -6,12 +6,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- Warning !! ensure that "stylesheet_pack_tag" is used, line below -->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-5">
+            <a class="navbar-brand" href="<%= root_path(@article)%>">Articles Blog</a>
+        </div>
+    </nav>
+
+    <div style="padding:10px"><%= yield %></div>
   </body>
 </html>

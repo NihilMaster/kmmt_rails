@@ -1,46 +1,36 @@
-<%= form_with model: article do |form| %>
-
-  <!-- Title AForm -->
-  <div class="row g-3 align-items-center">
-    <div class="col-auto">
-      <label class="col-form-label"><%= form.label :title %></label>
-    </div>
-    <div class="col-auto">
-      <%= form.text_field :title, :class =>'form-control' %>
-    </div>
-    <div class="col-auto">
+<fieldset>
+  <div class="card" style="width:50%; padding: 10px">
+    <%= form_with model: article do |form| %>
+    <div class="">
+      <label for="exampleInputEmail1" class="form-label mt-4"><%= form.label :title %></label>
+      <%= form.text_field :title, class:'form-control'%>
       <% article.errors.full_messages_for(:title).each do |message| %>
-        <span class="form-text"><%= message %></span>
-      <% end %> 
+      <small class="form-text text-danger"><%= message %></small>
     </div>
-  </div>
-  <!-- Title AForm-->
+    <% end %>
 
-  <!-- Body AForm-->
-  <div class="" style="margin-top:15px">
-    <%= form.label :body %><br>
-    <%= form.text_area :body, :class =>'form-control' %><br>
-    <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
+    <div class="">
+      <label for="exampleTextarea" class="form-label mt-4"><%= form.label :body %></label>
+      <%= form.text_area :body, class:'form-control', rows:'3' %>
+      <% article.errors.full_messages_for(:body).each do |message| %>
+      <small class="form-text text-danger"><%= message %></small>
+    </div>
+    <% end %>
+
+    <div class="" style="padding:5px">
+      <label for="exampleSelect1" class="form-label mt-4"><%= form.label :status %></label>
+      <%= form.select :status, %w[public private archived], selected: 'public', class: 'form-select' %>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; width: 100%; padding: 5px">
+      <div style="padding:5px">
+        <%= form.submit class:'btn btn-outline-success' %>
+      </div>
+      <div style="padding:5px">
+        <%= link_to 'Cancel', root_path(@article), :class => 'btn btn-outline-light' %>
+      </div>
+    </div>
+
     <% end %>
   </div>
-  <!-- Body AForm-->
-
-  <!-- Select AForm-->
-  <div style="padding: 15px; margin: 5px">
-    <%= form.label :status %><br>
-    <%= form.select :status, %w[public private archived], selected: 'public', :class => 'form-select'%>
-  </div>
-  <!-- Select AForm-->
-
-  <!-- Update AForm-->
-  <div style="display: flex; justify-content: flex-end; width: 100%;">
-    <div style="margin:5px">
-      <%= form.submit 'Accept', :class => 'btn btn-success'%>
-    </div>
-    <div style="margin:5px">
-      <%= link_to 'Cancel', root_path(@article), :class => 'btn btn-dark' %>
-    </div>
-  </div>
-  <!-- Update AForm-->
-<% end %>
+</fieldset>

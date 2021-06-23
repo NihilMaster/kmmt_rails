@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: test
+  database: testch
   host: 'localhost'
   port: 5432
   user: test

@@ -1,86 +1,30 @@
-<!-- Nav Index-->
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="https://rubyonrails.org/images/rails-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-      Rails Path - Articles and Comments!
-    </a>
-  </div>
-</nav>
-<!-- Nav Index-->
-
-<div class="">
-  <!-- Welcome Index-->
-  <div class="row" style="padding:10px; width: 100%;">
-    <div class="list-group list-group-horizontal">
-      <div class="col" style="padding: 15px;">
-        <h3 >Hello, User!</h3>
-        <h5 class="text-muted">Our blog has 2 articles and counting!</h5>
-      </div>
-      <div class="col">
-        <button class="btn btn-success" style="float: right;" onclick="location.href='<%= new_article_path %>'">New Article</button>
-      </div>
+<div class="row" style="padding:15px">
+  <% @articles.each_with_index do |article, i| %>
+  <div class="card border-info mb-3 col-4" style="max-width: 20rem; margin: 10px">
+    <div class="card-header">Article <%= i+1 %></div>
+    <div class="card" style="width:25%;">
+      <% if article.status == 'public' %>
+        <span class="badge rounded-pill btn-primary"><%= article.status %></span>
+      <% elsif article.status == 'private' %>
+        <span class="badge rounded-pill btn-secundary"><%= article.status %></span>
+      <% elsif article.status == 'archived' %>
+        <span class="badge rounded-pill btn-warning"><%= article.status %></span>
+      <% else %>
+        <span class="badge rounded-pill btn-danger"><%= article.status %></span>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title"><%= link_to article.title, article %></h4>
+      <p class="card-text"><%= article.body %></p>
     </div>
   </div>
-  <!-- Welcome Index-->
-
-  <!-- Table Index-->
-  <div class="table card" style="magin 10px">
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Article</th>
-          <th scope="col">Content</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @articles.each_with_index do |article, i| %>
-        <tr>
-          <th scope="row"> <%= i+1 %> </th>
-            <div class="col-ms">
-              <td><%= link_to article.title, article %></td>
-            </div>
-            <div class="col">
-              <td><%= article.body %></td>
-            </div>
-          </th>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <!-- Table Index-->
+  <% end %>
 </div>
 
-<p class="text-info" style="padding:20px;">Find me in app/views/articles/index.html.erb</p>
+<button class="btn btn-outline-primary" style="position:absolute; top:0; right:0; padding: 10px; margin:10px" onclick="location.href='<%= new_article_path %>'">New Article</button>
 
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted align-items-end">
-  <!-- Section: Social media -->
-  <section
-    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-  >
-    <!-- Left -->
-    <div class="me-5 d-none d-lg-block">
-      <span>CRUD developed in Rails, with hosting in Heroku, rigurized by Rubocop and stylized with Bootstrap.</span>
-    </div>
-    <!-- Left -->
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-
-    </div>
-    <!-- Right -->
-  </section>
-
-  <!-- Copyright -->
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    Mateo
-    <a class="text-reset fw-bold" href="https://github.com/NihilMaster">GitHub</a>
+<div style="width:100%; display: flex; justify-content: flex-end; position:absolute; bottom:0; right:0; padding: 10px">
+  <div class="card" style="width:20%;">
+    <span class="badge bg-info">This blog has <%= Article.public_count %> articles.</span>
   </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
+</div>

@@ -1,40 +1,26 @@
-<%= form_with model: [@article, @article.comments.build] do |form| %>
- 
-  <!-- Title CForm-->
-  <div class="row g-3 align-items-center">
-    <div class="col-auto">
-      <label class="col-form-label"><%= form.label :commenter %></label>
+<fieldset>
+  <div class="card">
+    <%= form_with model: [@article, @article.comments.build] do |form| %>
+    <div class="">
+      <label for="exampleInputEmail1" class="form-label mt-4"><%= form.label :commenter %></label>
+      <%= form.text_field :commenter, class:'form-control'%>
     </div>
-    <div class="col-auto">
-      <%= form.text_field :commenter, :class =>'form-control' %>
-    </div>
-  </div>
-  <!-- Title CForm-->
 
-  <!-- Body CForm-->
-  <div class="" style="margin-top:8px">
-    <%= form.label :body %><br>
-    <%= form.text_area :body, :class =>'form-control' %><br>
-  </div>
-  <!-- Body CForm-->
-
-
-  <!-- Select CForm-->
-  <div class="row g-3 align-items-center">
-    <div class="col-auto">
-      <label class="col-form-label"><%= form.label :status %><br></label>
+    <div class="">
+      <label for="exampleTextarea" class="form-label mt-4"><%= form.label :body %></label>
+      <%= form.text_area :body, class:'form-control', rows:'3' %>
     </div>
-    <div class="col-auto">
-      <%= form.select :status, %w[public private archived], selected: 'public', :class => 'form-select'%>
-    </div>
-  </div>
-  <!-- Select CForm-->
 
-  <!-- Update -->
-  <div>
-    <div style="display: flex; justify-content: flex-end; width: 100%;">
-      <%= form.submit 'Accept', :class => 'btn btn-success'%>
+    <div class="" style="padding:5px">
+      <label for="exampleSelect1" class="form-label mt-4"><%= form.label :status %></label>
+      <%= form.select :status, %w[public private archived], selected: 'public', class: 'form-select' %>
     </div>
-  </div>
-  <!-- Update -->
-<% end %>
+
+    <div style="display: flex; justify-content: flex-end; width: 100%; padding: 5px">
+      <div style="padding:5px">
+        <%= form.submit class:'btn btn-outline-success' %>
+      </div>
+    </div>
+
+    <% end %>
+</fieldset>
