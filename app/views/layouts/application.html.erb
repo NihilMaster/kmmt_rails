@@ -19,7 +19,7 @@
     <div style="padding:10px">
       <div class="border-success" style="width:100%; display: flex; justify-content: flex-end;">
         <% if user_signed_in? %>
-          <p class="text-muted"> Logged in as <strong><%= current_user.email%></strong>   <p>
+          <p class="text-muted" style="margin:10px"> Logged in as <strong><%= current_user.email %></strong> <p>
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn btn-outline-warning', :style => 'margin:5px' %> |
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-outline-danger', :style => 'margin:5px' %>
         <% else %>

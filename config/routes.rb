@@ -2,7 +2,11 @@ Rails.application.routes.draw do    # For details on the DSL available within th
   devise_for :users
   root "articles#index"
 
-    resources :articles do
-      resources :comments
-    end
+  resources :articles do
+    resources :comments
+  end
+
+  resources :users do
+    resources :articles
+  end
 end

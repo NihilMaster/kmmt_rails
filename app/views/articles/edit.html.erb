@@ -1,5 +1,13 @@
+<% if user_signed_in? %>
 <div style="padding: 10px">
     <h4>Edit Article</h4>
 
     <%= render 'form', article: @article %>
 </div>
+<% else %>
+  <h4>Log in to edit your articles.</h4>
+  <div class="border-success" style="width:100%; display: flex; justify-content: flex-center;">
+    <p style="margin:10px"> Back to Article Section: </p>
+    <%= link_to 'Home', root_path(@article), :class=>"btn btn-outline-dark", :style => 'margin:5px' %>
+  <div> 
+<% end %>
