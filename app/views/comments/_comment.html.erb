@@ -1,17 +1,30 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+<% case comment.status %>
+  <% when "public" %>
+  <div class='card border-secundary' style='padding:10px'>
+  <% when "private" %>
+  <div class='card border-primary' style='padding:10px'>
+  <% when "archived" %>
+  <div class='card border-warning' style='padding:10px'>
+  <% else %>
+  <div class='card border-danger' style='padding:10px'>
+<% end  %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
 
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
 
-<!-- Delete Comm-->
-<div style="margin:5px">
-  <div class="col"><%= button_to 'Delete comment', [comment.article, comment],
+  <!-- Delete Comm-->
+  <div style="margin:5px">
+    <% if user_signed_in? %>
+    <div class="col"><%= button_to 'Delete comment', [comment.article, comment],
                   method: :delete,
                   data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></div>
+    <% end %>
+  </div>
+  <!-- Delete Comm-->
 </div>
-<!-- Delete Comm-->

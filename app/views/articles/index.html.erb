@@ -4,9 +4,9 @@
     <div class="card-header">Article <%= i+1 %></div>
     <div class="card" style="width:25%;">
       <% if article.status == 'public' %>
-        <span class="badge rounded-pill btn-primary"><%= article.status %></span>
-      <% elsif article.status == 'private' %>
         <span class="badge rounded-pill btn-secundary"><%= article.status %></span>
+      <% elsif article.status == 'private' %>
+        <span class="badge rounded-pill btn-primary"><%= article.status %></span>
       <% elsif article.status == 'archived' %>
         <span class="badge rounded-pill btn-warning"><%= article.status %></span>
       <% else %>
@@ -29,6 +29,7 @@
 
 <div style="width:100%; display: flex; justify-content: flex-end; position:absolute; bottom:0; right:0; padding: 10px">
   <div class="card" style="width:20%;">
-    <span class="badge bg-info">This blog has <%= @articles.size %> articles.</span>
+    <span class="badge bg-info">This blog has <%= Article.public_count %> public articles.</span>
+    <span class="badge bg-dark">This blog has <%= @articles.size %> articles.</span>
   </div>
 </div>

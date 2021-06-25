@@ -1,4 +1,5 @@
 <fieldset>
+  <% if user_signed_in? %>
   <div class="card">
     <%= form_with model: [@article, @article.comments.build] do |form| %>
     <div class="">
@@ -21,6 +22,9 @@
         <%= form.submit class:'btn btn-outline-success' %>
       </div>
     </div>
-
     <% end %>
+  </div>
+  <% else %>
+    <h4>Log in to comment.</h4>
+  <% end %>
 </fieldset>
