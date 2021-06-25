@@ -1,4 +1,13 @@
-<div class="card border-info" style="padding:10px">
+<% case comment.status %>
+  <% when "public" %>
+  <div class='card border-secundary' style='padding:10px'>
+  <% when "private" %>
+  <div class='card border-primary' style='padding:10px'>
+  <% when "archived" %>
+  <div class='card border-warning' style='padding:10px'>
+  <% else %>
+  <div class='card border-danger' style='padding:10px'>
+<% end  %>
   <p>
     <strong>Commenter:</strong>
     <%= comment.commenter %>
