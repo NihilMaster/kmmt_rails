@@ -1,6 +1,6 @@
 <fieldset>
   <% if user_signed_in? %>
-  <div class="card">
+  <div class="card" style="padding:10px">
     <%= form_with model: [@article, @article.comments.build] do |form| %>
     <div class="">
       <label for="exampleInputEmail1" class="form-label mt-4"><%= form.label :commenter %></label>

@@ -21,7 +21,13 @@
   <%= render @article.comments %>
 </div>
 
-<div style="width:50%; padding: 10px; margin: 10px; bottom:0; left:0;">
-  <h2>Add a comment:</h2>
-  <p><%= render 'comments/form' %></p>
-</div>
+<% if current_user.following?(@user)  %>
+  <div style="width:50%; padding: 10px; margin: 10px; bottom:0; left:0;">
+    <h2>Add a comment:</h2>
+    <p><%= render 'comments/form' %></p>
+  </div>
+<% else %>
+  <div style="width:50%; padding: 10px; margin: 10px; bottom:0; left:0;">
+    <h4>To comment on this article, first follow its author<h4>
+  </div>
+<% end %>
