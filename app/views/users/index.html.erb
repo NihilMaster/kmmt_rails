@@ -14,7 +14,6 @@
                     <%= hidden_field_tag 'follower_user_id', current_user.id %>
                     <%= submit_tag "Unfollow", :confirm => 'Are you sure?', class: "btn btn-outline-danger", :style => 'padding: 10px; margin:10px;' %>
                 <% end %>
-                <%#= link_to "Unfollow", follows_path(), method: :delete%>
             <% end %>
         </div>
         <% end %>

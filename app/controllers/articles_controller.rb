@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @user = User.find(Article.find(params[:id]).user_id)
+    @user = User.find(@article.user_id)
   end
 
   def new
