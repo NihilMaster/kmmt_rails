@@ -1,0 +1,22 @@
+<div style="padding:5px;">
+    <h3>List of users </h3>
+    <% if user_signed_in? %>
+    <% @user.each do |u| %>
+        <% if u.id != current_user.id %>
+        <div class="card bg-primary" style="width:25%; margin:10px; padding:10px">
+            <p class="card-title"><strong>User: </strong><small class="text-secundary"><%= u.email %></small></p>
+            <% if !current_user.following?(u) %>
+                <%= button_to "Follow", follows_path(user_id: u.id), :class => 'btn btn-outline-light', :style => 'padding: 10px; margin:10px;'  %>
+                </button>
+            <% else %>
+                <%= form_tag user_unfollow_path(u) do %>
+                    <%= hidden_field_tag 'followed_user_id', u.id %>
+                    <%= hidden_field_tag 'follower_user_id', current_user.id %>
+                    <%= submit_tag "Unfollow", :confirm => 'Are you sure?', class: "btn btn-outline-danger", :style => 'padding: 10px; margin:10px;' %>
+                <% end %>
+            <% end %>
+        </div>
+        <% end %>
+    <% end %>
+    <% end %>
+</div>

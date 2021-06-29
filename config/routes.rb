@@ -9,4 +9,13 @@ Rails.application.routes.draw do    # For details on the DSL available within th
   resources :users do
     resources :articles
   end
+
+  # List of users
+  get '/users', to: 'users#index', as: "users_list"
+
+  resources :follows, only: [:create]
+
+  # Destroy->Unfollow function
+  post "unfollow", to: "follows#destroy", as: "user_unfollow"
+
 end
